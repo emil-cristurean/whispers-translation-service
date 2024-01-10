@@ -29,14 +29,14 @@ jobs:
 
       - name: Archive unit tests reports
         if: success() || failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: unit-tests-report
           path: build/reports/tests/test
           retention-days: 5
 
       - name: Archive jacoco reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jacoco-report
           path: build/jacocoHtml
