@@ -8,8 +8,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "16:00"
-      timezone: "Etc/UTC"
     open-pull-requests-limit: 3
 
   # Maintain dependencies for GitHub Actions
