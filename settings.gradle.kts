@@ -20,9 +20,9 @@ dependencyResolutionManagement {
             plugin("spring-dependency-manager", "io.spring.dependency-management").version("1.1.4")
             plugin("kotlin-jvm", "org.jetbrains.kotlin.jvm").versionRef("kotlin")
             plugin("kotlin-plugin-spring", "org.jetbrains.kotlin.plugin.spring").versionRef("kotlin")
-            plugin("dependency-check", "org.owasp.dependencycheck").version("9.0.7")
+            plugin("dependency-check", "org.owasp.dependencycheck").version("9.0.4")
             plugin("sonarqube", "org.sonarqube").version("4.4.1.3373")
-            plugin("ktlint", "org.jlleitschuh.gradle.ktlint").version("12.0.3")
+            plugin("ktlint", "org.jlleitschuh.gradle.ktlint").version("12.0.1")
             plugin("versions", "com.github.ben-manes.versions").version("0.50.0")
 
             library("spring-boot-starter", "org.springframework.boot", "spring-boot-starter").versionRef("spring-boot")
@@ -66,8 +66,8 @@ dependencyResolutionManagement {
             bundle("kotlin", listOf("kotlin-reflect", "kotlin-stdlib"))
 
             library("spring-boot-starter-test", "org.springframework.boot", "spring-boot-starter-test").withoutVersion()
-            library("mockito-kotlin", "org.mockito.kotlin", "mockito-kotlin").version("5.2.1")
-            library("mockito-core", "org.mockito", "mockito-core").version("5.8.0")
+            library("mockito-kotlin", "org.mockito.kotlin", "mockito-kotlin").version("5.2.0")
+            library("mockito-core", "org.mockito", "mockito-core").version("5.7.0")
             bundle("mockito", listOf("mockito-kotlin", "mockito-core"))
 
             library("whsprs-web-test", "com.rr.whispers", "commons-web-test").withoutVersion()
@@ -77,7 +77,7 @@ dependencyResolutionManagement {
             library("testcontainers", "org.testcontainers", "testcontainers").versionRef("testcontainers")
             bundle("testcontainers", listOf("junit-jupiter", "testcontainers"))
 
-            library("wiremock", "org.wiremock", "wiremock").version("3.3.1")
+            library("wiremock", "org.wiremock", "wiremock").version("3.3.0")
             library("junit-platform-launcher", "org.junit.platform", "junit-platform-launcher").withoutVersion()
         }
     }
