@@ -11,3 +11,15 @@ updates:
       time: "12:20"
       timezone: "Etc/UTC"
     open-pull-requests-limit: 3
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  # Enable version updates for Docker
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"

@@ -1,0 +1,38 @@
+name: Analyze dependencies
+
+on:
+  schedule:
+    - cron: "0 22 * * *"
+
+jobs:
+  analize-dependencies:
+    runs-on: cawe-linux-x64-general-large
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Add build parameters
+        run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
+
+      - name: Run dependencyCheckAnalyze
+        run: ./gradlew --no-daemon clean dependencyCheckAnalyze
+
+      - name: Archive dependency check reports
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-tests-report
+          path: build/reports/dependency-check-report.html
+          retention-days: 5

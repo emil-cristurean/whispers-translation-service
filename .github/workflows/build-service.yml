@@ -1,0 +1,67 @@
+name: Build service
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: cawe-linux-x64-general-large
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Add build parameters
+        run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
+
+      - name: Run dependency update
+        run: ./gradlew --no-daemon clean dependencyUpdates
+
+      - name: Archive dependency updates
+        uses: actions/upload-artifact@v3
+        with:
+          name: dependency-updates-report
+          path: build/dependencyUpdates/report.html
+          retention-days: 5
+
+      - name: Run ktlintCheck
+        run: ./gradlew --no-daemon clean ktlintCheck
+
+      - name: Archive ktlint reports
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ktlint-report
+          path: build/reports/ktlint
+          retention-days: 5
+
+      - name: Build
+        run: ./gradlew --no-daemon clean build -x test
+
+      - name: Run tests
+        run: ./gradlew --no-daemon clean test
+
+      - name: Archive unit tests reports
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-tests-report
+          path: build/reports/tests/test
+          retention-days: 5
+
+      - name: Archive jacoco reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: build/jacocoHtml
+          retention-days: 5
