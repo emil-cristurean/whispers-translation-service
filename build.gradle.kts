@@ -44,7 +44,7 @@ dependencyManagement {
     imports {
         mavenBom("com.rr.whispers:dependencies-bom:2.0.4-BETA")
         // Jetty 12.x.x from Spring Boot 3.2.x is incompatible with Wiremock 3.3.x.
-        mavenBom("org.eclipse.jetty:jetty-bom:11.0.18")
+        mavenBom("org.eclipse.jetty:jetty-bom:12.0.5")
     }
     applyMavenExclusions(false)
 }
