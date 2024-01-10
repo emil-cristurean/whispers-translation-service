@@ -22,7 +22,7 @@ dependencyResolutionManagement {
             plugin("kotlin-plugin-spring", "org.jetbrains.kotlin.plugin.spring").versionRef("kotlin")
             plugin("dependency-check", "org.owasp.dependencycheck").version("9.0.4")
             plugin("sonarqube", "org.sonarqube").version("4.4.1.3373")
-            plugin("ktlint", "org.jlleitschuh.gradle.ktlint").version("12.0.1")
+            plugin("ktlint", "org.jlleitschuh.gradle.ktlint").version("12.0.3")
             plugin("versions", "com.github.ben-manes.versions").version("0.50.0")
 
             library("spring-boot-starter", "org.springframework.boot", "spring-boot-starter").versionRef("spring-boot")
