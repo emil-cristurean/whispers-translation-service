@@ -1,0 +1,85 @@
+{
+    "project_id": "574373565f4ce48d761ba7.91879068",
+    "languages": [
+        {
+            "lang_id": 640,
+            "lang_iso": "en",
+            "lang_name": "English",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 610,
+            "lang_iso": "en_GB",
+            "lang_name": "English (United Kingdom)",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 706,
+            "lang_iso": "fr_FR",
+            "lang_name": "French (France)",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 672,
+            "lang_iso": "de_DE",
+            "lang_name": "German (Germany)",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 10165,
+            "lang_iso": "ja_JP",
+            "lang_name": "Japanese (Japan)",
+            "is_rtl": false,
+            "plural_forms": [
+                "other"
+            ]
+        },
+        {
+            "lang_id": 10173,
+            "lang_iso": "ko_KR",
+            "lang_name": "Korean (Korea)",
+            "is_rtl": false,
+            "plural_forms": [
+                "other"
+            ]
+        },
+        {
+            "lang_id": 600,
+            "lang_iso": "ru_RU",
+            "lang_name": "Russian (Russia)",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "few",
+                "many",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 665,
+            "lang_iso": "es_ES",
+            "lang_name": "Spanish (Spain)",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        }
+    ]
+}

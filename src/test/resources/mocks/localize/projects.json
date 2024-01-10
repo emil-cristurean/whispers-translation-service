@@ -1,0 +1,378 @@
+{
+    "projects": [
+        {
+            "project_id": "android",
+            "project_type": "localization_files",
+            "name": "Whispers Android",
+            "description": "",
+            "created_at": "2020-09-01 13:50:58 (Etc\/UTC)",
+            "created_at_timestamp": 1598968258,
+            "created_by": 75149,
+            "created_by_email": "benjamin.proeger@googlemail.com",
+            "team_id": 217317,
+            "base_language_id": 640,
+            "base_language_iso": "en",
+            "settings": {
+                "per_platform_key_names": false,
+                "reviewing": true,
+                "auto_toggle_unverified": true,
+                "offline_translation": false,
+                "key_editing": true,
+                "inline_machine_translations": true,
+                "branching": false,
+                "segmentation": false,
+                "contributor_preview_download_enabled": false,
+                "custom_translation_statuses": false,
+                "custom_translation_statuses_allow_multiple": false
+            },
+            "statistics": {
+                "progress_total": 49,
+                "keys_total": 1555,
+                "team": 10,
+                "base_words": 11498,
+                "qa_issues_total": 15475,
+                "qa_issues": {
+                    "not_reviewed": 10884,
+                    "unverified": 4344,
+                    "spelling_grammar": 185,
+                    "inconsistent_placeholders": 11,
+                    "inconsistent_html": 4,
+                    "different_number_of_urls": 0,
+                    "different_urls": 0,
+                    "leading_whitespace": 5,
+                    "trailing_whitespace": 42,
+                    "different_number_of_email_address": 0,
+                    "different_email_address": 0,
+                    "different_brackets": 0,
+                    "different_numbers": 0,
+                    "double_space": 0,
+                    "special_placeholder": 0,
+                    "unbalanced_brackets": 0
+                },
+                "languages": [
+                    {
+                        "language_id": 666,
+                        "language_iso": "de",
+                        "progress": 1,
+                        "words_to_do": 11444
+                    },
+                    {
+                        "language_id": 640,
+                        "language_iso": "en",
+                        "progress": 100,
+                        "words_to_do": 0
+                    },
+                    {
+                        "language_id": 1056,
+                        "language_iso": "es",
+                        "progress": 1,
+                        "words_to_do": 11484
+                    },
+                    {
+                        "language_id": 673,
+                        "language_iso": "fr",
+                        "progress": 1,
+                        "words_to_do": 11479
+                    },
+                    {
+                        "language_id": 643,
+                        "language_iso": "ja",
+                        "progress": 99,
+                        "words_to_do": 7
+                    },
+                    {
+                        "language_id": 733,
+                        "language_iso": "ko",
+                        "progress": 99,
+                        "words_to_do": 30
+                    },
+                    {
+                        "language_id": 597,
+                        "language_iso": "ru",
+                        "progress": 41,
+                        "words_to_do": 6777
+                    }
+                ]
+            }
+        },
+        {
+            "project_id": "backend",
+            "project_type": "localization_files",
+            "name": "Whispers Backend",
+            "description": "Notifications, Updates (Config Service), Error Messages, Mails",
+            "created_at": "2020-08-31 11:52:45 (Etc\/UTC)",
+            "created_at_timestamp": 1598874765,
+            "created_by": 75149,
+            "created_by_email": "benjamin.proeger@googlemail.com",
+            "team_id": 217317,
+            "base_language_id": 610,
+            "base_language_iso": "en_GB",
+            "settings": {
+                "per_platform_key_names": false,
+                "reviewing": true,
+                "auto_toggle_unverified": true,
+                "offline_translation": false,
+                "key_editing": true,
+                "inline_machine_translations": true,
+                "branching": false,
+                "segmentation": false,
+                "contributor_preview_download_enabled": false,
+                "custom_translation_statuses": false,
+                "custom_translation_statuses_allow_multiple": false
+            },
+            "statistics": {
+                "progress_total": 42,
+                "keys_total": 302,
+                "team": 11,
+                "base_words": 1849,
+                "qa_issues_total": 3639,
+                "qa_issues": {
+                    "not_reviewed": 2225,
+                    "unverified": 1307,
+                    "spelling_grammar": 52,
+                    "inconsistent_placeholders": 25,
+                    "inconsistent_html": 0,
+                    "different_number_of_urls": 0,
+                    "different_urls": 0,
+                    "leading_whitespace": 10,
+                    "trailing_whitespace": 20,
+                    "different_number_of_email_address": 0,
+                    "different_email_address": 0,
+                    "different_brackets": 0,
+                    "different_numbers": 0,
+                    "double_space": 0,
+                    "special_placeholder": 0,
+                    "unbalanced_brackets": 0
+                },
+                "languages": [
+                    {
+                        "language_id": 672,
+                        "language_iso": "de_DE",
+                        "progress": 1,
+                        "words_to_do": 1836
+                    },
+                    {
+                        "language_id": 640,
+                        "language_iso": "en",
+                        "progress": 1,
+                        "words_to_do": 1837
+                    },
+                    {
+                        "language_id": 610,
+                        "language_iso": "en_GB",
+                        "progress": 100,
+                        "words_to_do": 0
+                    },
+                    {
+                        "language_id": 665,
+                        "language_iso": "es_ES",
+                        "progress": 5,
+                        "words_to_do": 1744
+                    },
+                    {
+                        "language_id": 706,
+                        "language_iso": "fr_FR",
+                        "progress": 1,
+                        "words_to_do": 1836
+                    },
+                    {
+                        "language_id": 10165,
+                        "language_iso": "ja_JP",
+                        "progress": 100,
+                        "words_to_do": 0
+                    },
+                    {
+                        "language_id": 10173,
+                        "language_iso": "ko_KR",
+                        "progress": 100,
+                        "words_to_do": 0
+                    },
+                    {
+                        "language_id": 600,
+                        "language_iso": "ru_RU",
+                        "progress": 29,
+                        "words_to_do": 1306
+                    }
+                ]
+            }
+        },
+        {
+            "project_id": "ios",
+            "project_type": "localization_files",
+            "name": "Whispers iOS",
+            "description": "",
+            "created_at": "2020-08-28 10:40:24 (Etc\/UTC)",
+            "created_at_timestamp": 1598611224,
+            "created_by": 75149,
+            "created_by_email": "benjamin.proeger@googlemail.com",
+            "team_id": 217317,
+            "base_language_id": 640,
+            "base_language_iso": "en",
+            "settings": {
+                "per_platform_key_names": false,
+                "reviewing": true,
+                "auto_toggle_unverified": true,
+                "offline_translation": false,
+                "key_editing": true,
+                "inline_machine_translations": true,
+                "branching": false,
+                "segmentation": false,
+                "contributor_preview_download_enabled": false,
+                "custom_translation_statuses": false,
+                "custom_translation_statuses_allow_multiple": false
+            },
+            "statistics": {
+                "progress_total": 55,
+                "keys_total": 2042,
+                "team": 10,
+                "base_words": 12925,
+                "qa_issues_total": 17285,
+                "qa_issues": {
+                    "not_reviewed": 11979,
+                    "unverified": 4811,
+                    "spelling_grammar": 330,
+                    "inconsistent_placeholders": 20,
+                    "inconsistent_html": 5,
+                    "different_number_of_urls": 0,
+                    "different_urls": 0,
+                    "leading_whitespace": 24,
+                    "trailing_whitespace": 116,
+                    "different_number_of_email_address": 0,
+                    "different_email_address": 0,
+                    "different_brackets": 0,
+                    "different_numbers": 0,
+                    "double_space": 0,
+                    "special_placeholder": 0,
+                    "unbalanced_brackets": 0
+                },
+                "languages": [
+                    {
+                        "language_id": 666,
+                        "language_iso": "de",
+                        "progress": 30,
+                        "words_to_do": 9044
+                    },
+                    {
+                        "language_id": 640,
+                        "language_iso": "en",
+                        "progress": 99,
+                        "words_to_do": 0
+                    },
+                    {
+                        "language_id": 1056,
+                        "language_iso": "es",
+                        "progress": 1,
+                        "words_to_do": 12909
+                    },
+                    {
+                        "language_id": 673,
+                        "language_iso": "fr",
+                        "progress": 1,
+                        "words_to_do": 12891
+                    },
+                    {
+                        "language_id": 643,
+                        "language_iso": "ja",
+                        "progress": 99,
+                        "words_to_do": 17
+                    },
+                    {
+                        "language_id": 733,
+                        "language_iso": "ko",
+                        "progress": 99,
+                        "words_to_do": 36
+                    },
+                    {
+                        "language_id": 597,
+                        "language_iso": "ru",
+                        "progress": 55,
+                        "words_to_do": 5781
+                    }
+                ]
+            }
+        },
+        {
+            "project_id": "web",
+            "project_type": "localization_files",
+            "name": "Whispers Web",
+            "description": "",
+            "created_at": "2021-04-13 07:16:36 (Etc\/UTC)",
+            "created_at_timestamp": 1618298196,
+            "created_by": 75149,
+            "created_by_email": "benjamin.proeger@googlemail.com",
+            "team_id": 217317,
+            "base_language_id": 640,
+            "base_language_iso": "en",
+            "settings": {
+                "per_platform_key_names": false,
+                "reviewing": true,
+                "auto_toggle_unverified": true,
+                "offline_translation": false,
+                "key_editing": true,
+                "inline_machine_translations": true,
+                "branching": false,
+                "segmentation": false,
+                "contributor_preview_download_enabled": false,
+                "custom_translation_statuses": false,
+                "custom_translation_statuses_allow_multiple": false
+            },
+            "statistics": {
+                "progress_total": 60,
+                "keys_total": 6,
+                "team": 11,
+                "base_words": 63,
+                "qa_issues_total": 36,
+                "qa_issues": {
+                    "not_reviewed": 24,
+                    "unverified": 12,
+                    "spelling_grammar": 0,
+                    "inconsistent_placeholders": 0,
+                    "inconsistent_html": 0,
+                    "different_number_of_urls": 0,
+                    "different_urls": 0,
+                    "leading_whitespace": 0,
+                    "trailing_whitespace": 0,
+                    "different_number_of_email_address": 0,
+                    "different_email_address": 0,
+                    "different_brackets": 0,
+                    "different_numbers": 0,
+                    "double_space": 0,
+                    "special_placeholder": 0,
+                    "unbalanced_brackets": 0
+                },
+                "languages": [
+                    {
+                        "language_id": 666,
+                        "language_iso": "de",
+                        "progress": 0,
+                        "words_to_do": 63
+                    },
+                    {
+                        "language_id": 640,
+                        "language_iso": "en",
+                        "progress": 100,
+                        "words_to_do": 0
+                    },
+                    {
+                        "language_id": 643,
+                        "language_iso": "ja",
+                        "progress": 100,
+                        "words_to_do": 0
+                    },
+                    {
+                        "language_id": 733,
+                        "language_iso": "ko",
+                        "progress": 100,
+                        "words_to_do": 0
+                    },
+                    {
+                        "language_id": 597,
+                        "language_iso": "ru",
+                        "progress": 0,
+                        "words_to_do": 63
+                    }
+                ]
+            }
+        }
+    ]
+}

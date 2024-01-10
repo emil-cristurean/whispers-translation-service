@@ -1,0 +1,34 @@
+server:
+  port : 8080
+
+springdoc:
+  api-docs:
+    path: /apidoc/index
+
+logging:
+  level:
+    com:
+      rr:
+        whispers:
+          translationservice:
+            translations:
+              adapter: INFO
+    org:
+      springframework:
+        web:
+          client:
+            RestTemplate: DEBUG
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            loggerLevel: full
+feign:
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        loggerLevel: full

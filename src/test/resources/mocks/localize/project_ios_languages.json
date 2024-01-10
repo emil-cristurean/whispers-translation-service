@@ -1,0 +1,77 @@
+{
+    "project_id": "833665435f48df184da0a8.85068891",
+    "languages": [
+        {
+            "lang_id": 640,
+            "lang_iso": "en",
+            "lang_name": "English",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 673,
+            "lang_iso": "fr",
+            "lang_name": "French",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 666,
+            "lang_iso": "de",
+            "lang_name": "German",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 643,
+            "lang_iso": "ja",
+            "lang_name": "Japanese",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 733,
+            "lang_iso": "ko",
+            "lang_name": "Korean",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 597,
+            "lang_iso": "ru",
+            "lang_name": "Russian",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "few",
+                "many",
+                "other"
+            ]
+        },
+        {
+            "lang_id": 1056,
+            "lang_iso": "es",
+            "lang_name": "Spanish",
+            "is_rtl": false,
+            "plural_forms": [
+                "one",
+                "other"
+            ]
+        }
+    ]
+}

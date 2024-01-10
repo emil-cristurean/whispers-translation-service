@@ -1,0 +1,27 @@
+### GET Actuator prometheus
+GET {{SERVICE_URL}}/actuator/prometheus
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### GET Actuator info
+GET {{SERVICE_URL}}/actuator/info
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### GET Api index
+GET {{SERVICE_URL}}/apidoc/index
+Accept: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}

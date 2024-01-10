@@ -1,0 +1,23 @@
+### Translations Android
+GET {{SERVICE_URL}}/api/app/v1/translations?project=ANDROID
+Accept: application/json
+x-locale: en-GB
+x-user-agent: RR
+
+### Translations IOS
+GET {{SERVICE_URL}}/api/app/v1/translations?project=IOS
+Accept: application/json
+x-locale: en-GB
+x-user-agent: RR
+
+### Translations Backend - Notifications - en-GB
+GET {{SERVICE_URL}}/api/app/v1/translations?project=NOTIFICATION_SERVICE
+Accept: application/json
+x-locale: en-GB
+x-user-agent: RR
+
+### Translations Backend - Notifications - ja-JP
+GET {{SERVICE_URL}}/api/app/v1/translations?project=NOTIFICATION_SERVICE
+Accept: application/json
+x-locale: ja-JP
+x-user-agent: RR

@@ -1,0 +1,16 @@
+{
+    "gcid": "ABCD",
+    "mappingInfos": [
+        {
+            "vin": "SCATEST0000000001",
+            "mappingStatus": "CONFIRMED",
+            "vehicleMappingType": "CONNECTED",
+            "lmmStatus": null,
+            "lmmStatusReasons": null,
+            "hasError": null,
+            "lmmEnabled": false,
+            "primaryUser": true,
+            "associated": true
+        }
+    ]
+}

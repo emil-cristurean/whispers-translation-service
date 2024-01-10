@@ -1,0 +1,30 @@
+server:
+  port : 8080
+
+whsprs:
+  third-party-systems:
+    localize:
+      url: http://localhost:8089
+      api:
+        token: test
+
+
+  #Same key as in docker-compose.yml
+  #Same key as in docker-compose.yml
+  jwt-verifier-key: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu7/QKxlu3+IIE1Tf3QY0
+    7+Lj+tJg48Pghcb07XZHJ22ntJgl72h/Qr0rlZW3R7K1/0oF12OuvqMJzbZKGbe9
+    P2Mg6hrPfVhZU4ZM1vXKn8IqehAkyduZiIVn6Is5x2GlQzZ0ixOFGiP9AqQXZD/0
+    gHmnv5xvze78FJHnhWfmjDQ1m5BorRKct1fZN1o+pzUnzppbvzQ6RhYW1yy/fLIM
+    69pHnkhZhlJLDjTuKt62e9Lgn3AED4vn2R68a4SiBLT+W1PgdVqHvlEpUbdzKwFi
+    n7aZp9XNJ68c6xSq8o81Zqj2bQP5AKNlvT4uH0NQipvxdrpa+VGqGzK9FjsIJY3n
+    IQIDAQABdoc
+    -----END PUBLIC KEY-----
+  user:
+    security:
+      basic-authentication:
+        technical-endpoints:
+          credentials:
+            username: local-test-username
+            password: local-test-password
