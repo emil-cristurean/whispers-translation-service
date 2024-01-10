@@ -1,5 +1,7 @@
 # Basic set up for three package managers
 
+runs-on: ubuntu-latest
+
 version: 2
 updates:
 
