@@ -1,14 +1,24 @@
 # Basic set up for three package managers
 
 version: 2
+
+registries:
+  odm:
+    type: maven-repository
+    url: https://odmartifactory.jfrog.io/odmartifactory/rr-whispers-mvn/
+    username:  ${{secrets.ODM_ARTIFACTORY_USER}}
+    password: ${{secrets.ODM_ARTIFACTORY_PASSWORD}}
+
 updates:
 
-  # Maintain dependencies for Maven
+  # Maintain dependencies for gradle
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 3
+    registries:
+      - odm
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
