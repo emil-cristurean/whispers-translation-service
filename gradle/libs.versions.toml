@@ -1,0 +1,72 @@
+[versions]
+
+cloud-feign = "4.1.0"
+dependency-check = "9.0.4"
+idea-ext = "1.1.7"
+feign = "13.1"
+jackson = "2.15.3"
+java = "17"
+jacoco = "0.8.10"
+kotlin = "1.9.22"
+ktlint-extension = "1.1.0"
+ktlint = "12.0.3"
+mockito-kotlin = "5.2.0"
+mockito-core = "5.7.0"
+sonarqube = "4.4.1.3373"
+spring-boot = "3.2.1"
+spring-dependency-manager = "1.1.4"
+springdoc = "2.3.0"
+testcontainers = "1.19.3"
+versions = "0.50.0"
+wiremock = "3.3.0"
+
+[libraries]
+feign-okhttp = { module = "io.github.openfeign:feign-okhttp", version.ref = "feign" }
+
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+junit-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
+
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
+
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring-boot" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-boot" }
+spring-cloud-openfeign = { module = "org.springframework.cloud:spring-cloud-starter-openfeign", version.ref = "cloud-feign" }
+
+springdoc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+springdoc-api = { module = "org.springdoc:springdoc-openapi-starter-webmvc-api", version.ref = "springdoc" }
+
+testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }
+
+whsprs-language = { module = "com.rr.whispers:commons-language" }
+whsprs-observability = { module = "com.rr.whispers:commons-observability" }
+whsprs-web = { module = "com.rr.whispers:commons-web" }
+whsprs-web-test = { module = "com.rr.whispers:commons-web-test" }
+
+wiremock = { module = "org.wiremock:wiremock-standalone", version.ref = "wiremock" }
+
+[bundles]
+jackson = ["jackson-module-kotlin", "jackson-databind"]
+kotlin = ["kotlin-reflect", "kotlin-stdlib"]
+mockito =["mockito-kotlin", "mockito-core"]
+springdoc = ["springdoc-ui", "springdoc-api"]
+testcontainers = ["junit-jupiter", "testcontainers"]
+whsprs = ["whsprs-language", "whsprs-observability", "whsprs-web"]
+whsprs-test = ["whsprs-web-test"]
+
+[plugins]
+dependency-check = { id = "org.owasp.dependencycheck", version.ref = "dependency-check" }
+idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version.ref = "idea-ext" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-dependency-manager = { id = "io.spring.dependency-management", version.ref = "spring-dependency-manager" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
