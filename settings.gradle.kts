@@ -77,7 +77,7 @@ dependencyResolutionManagement {
             library("testcontainers", "org.testcontainers", "testcontainers").versionRef("testcontainers")
             bundle("testcontainers", listOf("junit-jupiter", "testcontainers"))
 
-            library("wiremock", "org.wiremock", "wiremock").version("3.3.0")
+            library("wiremock", "org.wiremock", "wiremock-standalone").version("3.3.1")
             library("junit-platform-launcher", "org.junit.platform", "junit-platform-launcher").withoutVersion()
         }
     }
