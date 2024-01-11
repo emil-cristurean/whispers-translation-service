@@ -67,7 +67,7 @@ dependencies {
 //    testImplementation(libs.wiremock)
     testRuntimeOnly(libs.junit.platform.launcher)
 
-    testImplementation("org.wiremock:wiremock-standalone:3.3.0")
+    testImplementation("org.wiremock:wiremock-standalone:3.3.1")
 }
 
 tasks.register("resolveDependencies") {
