@@ -44,6 +44,9 @@ jobs:
           context: .
           push: true
           tags: localhost:5000/ts:testing
+          build-args: |
+            ODM_ARTIFACTORY_USER=${{ secrets.ODM_ARTIFACTORY_USER }}
+            ODM_ARTIFACTORY_PASSWORD=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}
 
       # It's also possible to scan your private registry with Trivy's built-in image scan.
       # All you have to do is set ENV vars.
