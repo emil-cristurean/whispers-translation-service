@@ -31,7 +31,6 @@ class TranslationService(
         val keys = localizeAdapter.getProjectKeys(projectDomain.id)
         logger.info("Found ${keys.size} keys")
 
-        val tags = mutableListOf<String>()
         val translations = mutableListOf<TranslationDomain>()
         keys.forEach { key ->
             // filter for tag

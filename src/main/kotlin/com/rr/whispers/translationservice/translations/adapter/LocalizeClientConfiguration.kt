@@ -14,8 +14,6 @@ class LocalizeClientConfiguration(
 
     @Bean
     fun localizeClientRequestInterceptor(): RequestInterceptor {
-        logger.info("apiToken: $apiToken")
-
         return RequestInterceptor { requestTemplate: RequestTemplate ->
             requestTemplate.header("X-Api-Token", apiToken)
         }
