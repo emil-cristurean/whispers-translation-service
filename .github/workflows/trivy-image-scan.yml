@@ -24,10 +24,19 @@ jobs:
 #      - name: Add build parameters
 #        run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
 
-      - name: Build an image from Dockerfile
-        run: |
-          docker build --build-arg ODM_ARTIFACTORY_USER=${{ secrets.ODM_ARTIFACTORY_USER }} ODM_ARTIFACTORY_PASSWORD=${{ secrets.ODM_ARTIFACTORY_PASSWORD }} -t docker.io/my-organization/ta:${{ github.sha }} .
-
+      - name: Build docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./
+          push: true
+          tags: docker.io/my-organization/ta:${{ github.sha }}
+          cache-from: type=gha,mode=max
+          cache-to: type=gha,mode=max
+          build-args: |
+            ODM_ARTIFACTORY_USER=${{ secrets.ODM_ARTIFACTORY_USER }}
+            ODM_ARTIFACTORY_PASSWORD=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}
+            GIT_LAST_COMMIT_SHA=${{ github.sha }}
+            
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
