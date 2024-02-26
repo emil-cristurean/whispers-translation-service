@@ -33,6 +33,10 @@ jobs:
           registry: ghcr.io/emil-cristurean
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build docker image
         uses: docker/build-push-action@v5
