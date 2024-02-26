@@ -21,12 +21,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Add build parameters
-        run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
+#      - name: Add build parameters
+#        run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t docker.io/my-organization/ta:${{ github.sha }} .
+          docker build --build-arg ODM_ARTIFACTORY_USER=${{ secrets.ODM_ARTIFACTORY_USER }} ODM_ARTIFACTORY_PASSWORD=${{ secrets.ODM_ARTIFACTORY_PASSWORD }} -t docker.io/my-organization/ta:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
