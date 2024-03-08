@@ -1,0 +1,52 @@
+name: Build service1
+
+on: [push]
+
+jobs:
+  setup-java-and-gradle:
+    uses: .github/workflows/setup-java-and-gradle.yml@vmain
+
+  build:
+    runs-on: [ cawe-linux-x64-general-large ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Add build parameters
+        run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
+
+      - name: Run dependency update
+        run: ./gradlew --no-daemon clean dependencyUpdates
+
+      - name: Archive dependency updates
+        uses: actions/upload-artifact@v3
+        with:
+          name: dependency-updates-report
+          path: build/dependencyUpdates/report.html
+          retention-days: 5
+
+      - name: Run ktlintCheck
+        run: ./gradlew --no-daemon clean ktlintCheck
+
+      - name: Archive ktlint reports
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ktlint-report
+          path: build/reports/ktlint
+          retention-days: 5
+
+      - name: Build
+        run: ./gradlew --no-daemon clean build -x test
