@@ -1,6 +1,6 @@
 name: Build service1
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   setup-java-and-gradle:
