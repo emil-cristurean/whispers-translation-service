@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   setup-java-and-gradle:
-    uses: .github/workflows/setup-java-and-gradle.yml@vmain
+    uses: emil-cristurean/whispers-translation-service/.github/workflows/setup-java-and-gradle.yml@vmain
 
   build:
     runs-on: [ cawe-linux-x64-general-large ]
