@@ -19,6 +19,3 @@ runs:
       shell: bash
       run: chmod +x ./gradlew
 
-    - name: Add build parameters
-      shell: bash
-      run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
