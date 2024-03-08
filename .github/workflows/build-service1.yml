@@ -7,7 +7,7 @@ jobs:
     uses: emil-cristurean/whispers-translation-service/.github/workflows/setup-java-and-gradle.yml@main
 
   build:
-    runs-on: [ cawe-linux-x64-general-large ]
+    runs-on: [ ubuntu-latest ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
