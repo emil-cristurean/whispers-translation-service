@@ -13,7 +13,7 @@ jobs:
         run: ./gradlew --no-daemon clean dependencyUpdates
 
       - name: Archive dependency updates
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dependency-updates-report
           path: build/dependencyUpdates/report.html
@@ -24,7 +24,7 @@ jobs:
 
       - name: Archive ktlint reports
         if: success() || failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ktlint-report
           path: build/reports/ktlint
