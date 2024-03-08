@@ -25,7 +25,7 @@ jobs:
         run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
 
       - name: Run tests
-        run: ./gradlew --no-daemon clean test
+        run: ./gradlew --no-daemon clean test --info
 
       - name: Archive unit tests reports
         if: success() || failure()

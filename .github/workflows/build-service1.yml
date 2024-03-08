@@ -3,12 +3,13 @@ name: Build service1
 on: [push, workflow_dispatch]
 
 jobs:
-  setup-java-and-gradle:
-    uses: emil-cristurean/whispers-translation-service/.github/workflows/setup-java-and-gradle.yml@main
 
   build:
     runs-on: [ ubuntu-latest ]
     steps:
+      - name: Setup java and gradle
+        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle.yml@main
+
       - name: Run dependency update
         run: ./gradlew --no-daemon clean dependencyUpdates
 
