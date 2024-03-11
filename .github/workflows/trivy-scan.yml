@@ -1,0 +1,19 @@
+# Depending on the location of your Docker container
+# you need to change the path to the specific Docker registry.
+#
+name: "Trivy vulnerability scanner"
+
+on: [push]
+
+jobs:
+  run-tests:
+    runs-on: [ cawe-linux-x64-general-large ]
+    steps:
+      - name: Setup java and gradle
+        uses: rolls-royce/whispers-translation-service/.github/actions/setup-java-and-gradle@main
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
