@@ -45,8 +45,8 @@ jobs:
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Setup java and gradle
+        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@main
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
@@ -60,19 +60,6 @@ jobs:
           # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
           # queries: security-extended,security-and-quality
           queries: security-and-quality
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'zulu'
-          overwrite-settings: false
-
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
 
       - name: Add build parameters
         run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
