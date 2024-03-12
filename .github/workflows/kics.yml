@@ -22,11 +22,13 @@ jobs:
           output_formats: "json,sarif"
 
       - name: Show results
+        if: success() || failure()
         run: |
           cat kicsResults/results.sarif
           cat kicsResults/results.json
 
       - name: Upload SARIF file
+        if: success() || failure()
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: kicsResults/results.sarif
