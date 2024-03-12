@@ -131,6 +131,7 @@ tasks.jacocoTestReport {
     }
 }
 
+
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
     version.set(libs.versions.ktlint.extension.get())
     debug.set(true)
@@ -139,6 +140,9 @@ configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
     outputColorName.set("RED")
     reporters {
         reporter(ReporterType.HTML)
+        reporter(ReporterType.SARIF)
+        reporter(ReporterType.PLAIN)
+        reporter(ReporterType.CHECKSTYLE)
     }
 }
 
