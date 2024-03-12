@@ -15,6 +15,18 @@ jobs:
       - name: Run dependency update
         run: ./gradlew --no-daemon clean dependencyUpdates
 
+      - name: Show dependency update result
+        run:
+          {
+            echo "### Dependency updates"
+            echo "| Variable   | Value       |"
+            echo "| ---------- | ----------- |"
+            echo "| Number of dependencies  | 38  |"
+            echo "| Number of up to date dependencies | 13 |"
+            echo "| Number of outdated dependencies | 25 |"
+            echo "| Number of outdated dependencies | 25 |"
+          } >> $GITHUB_STEP_SUMMARY
+
       - name: Archive dependency updates
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # 4.3.1
         with:
@@ -27,9 +39,12 @@ jobs:
 
       - name: Upload ktlintKotlinScriptCheck SARIF file
         if: failure()
-        uses: github/codeql-action/upload-sarif@83a02f7883b12e0e4e1a146174f5e2292a01e601 # V2.16.4
-        with:
-          sarif_file: build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.sarif
+        run: |
+          echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+          echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
+          echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
+          echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
 
       - name: Run ktlintCheck
         run: ./gradlew --no-daemon clean ktlintCheck

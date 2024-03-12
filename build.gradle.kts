@@ -1,7 +1,9 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.reporting.ReportGenerator.Format
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterV2Reporter
+
 
 plugins {
     alias(libs.plugins.spring.boot)
@@ -139,16 +141,28 @@ configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
     outputToConsole.set(true)
     outputColorName.set("RED")
     reporters {
-        reporter(ReporterType.HTML)
-        reporter(ReporterType.SARIF)
-        reporter(ReporterType.PLAIN)
+        reporter(ReporterType.PLAIN_GROUP_BY_FILE)
         reporter(ReporterType.CHECKSTYLE)
+        reporter(ReporterType.JSON)
+        reporter(ReporterType.SARIF)
+        reporter(ReporterType.HTML)
     }
 }
 
+
+fun String.isNonStable(): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(this)
+    return isStable.not()
+}
 tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
+    rejectVersionIf {
+        candidate.version.isNonStable()
+    }
+
     checkForGradleUpdate = true
-    outputFormatter = "html"
+    outputFormatter = "json,xml,html"
     outputDir = "build/dependencyUpdates"
     reportfileName = "report"
 }
