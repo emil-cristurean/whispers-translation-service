@@ -13,7 +13,7 @@ jobs:
         uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@d218be1faa0151446f59bcd4c01db1f5bd24722a #1.0.0
 
       - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
         with:
           scan-type: 'fs'
           scan-ref: '.'

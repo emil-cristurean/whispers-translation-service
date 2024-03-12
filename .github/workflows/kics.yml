@@ -20,7 +20,7 @@ jobs:
         run: mkdir -p results-dir
 
       - name: Run KICS Scan with SARIF result
-        uses: checkmarx/kics-github-action@master
+        uses: checkmarx/kics-github-action@8a44970e3d2eca668be41abe9d4e06709c3b3609 # 1.7.0
         with:
           path: '.'
           output_path: kicsResults/
@@ -34,6 +34,6 @@ jobs:
 
       - name: Upload SARIF file
         if: success() || failure()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@83a02f7883b12e0e4e1a146174f5e2292a01e601 # V2.16.4
         with:
           sarif_file: kicsResults/results.sarif
