@@ -27,15 +27,15 @@ RUN ./gradlew -no-daemon build -x test
 
 FROM eclipse-temurin:17-jre-focal
 
-ARG GIT_LAST_COMMIT_SHA
-ARG CLUSTER_SERVICE_CURRENT_VERSION
-ENV Internal__Info__CommitSha=${GIT_LAST_COMMIT_SHA}
-ENV CLUSTER_SERVICE_CURRENT_VERSION=${CLUSTER_SERVICE_CURRENT_VERSION}
-ENV Internal__Info__ClusterServiceVersion=${CLUSTER_SERVICE_CURRENT_VERSION}
+ARG UID=10000
+ARG GID=3000
 
-COPY entrypoint.sh /
-COPY --from=builder /gradle/src/build/libs/whispers-translation-service.jar app.jar
+COPY --chmod=755 entrypoint.sh /
+COPY --chmod=755 --from=builder /gradle/src/build/libs/whispers-translation-service.jar app.jar
 
-RUN chmod +x /entrypoint.sh
+USER ${UID}:${GID}
 
 ENTRYPOINT ["sh", "./entrypoint.sh"]
+
+HEALTHCHECK --interval=5m --timeout=3s \
+  CMD curl -f http://localhost:8080/actuator/health || exit 1
