@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Release.Namespace | default "default" | quote }}
+  labels:
+    {{ include "whispers-translation-service.labels" . | nindent 4 }}
+data:
+  WHSPRS_MQTT_CLIENTID: "{{ .Values.mqtt.client.id }}"
+  WHSPRS_AWS_REGION: "{{ .Values.aws.region }}"
+  WHSPRS_AWS_SQS_QUEUE_CHARGINGEVENT_URL: "{{ .Values.aws.queue.chargingEvent.url }}"
+  WHSPRS_AWS_SQS_QUEUE_CHARGINGEVENT_SCHEDULE_DELAY: "{{ .Values.aws.queue.chargingEvent.schedule.delay }}"
+  WHSPRS_AWS_SQS_QUEUE_CHARGINGEVENT_SCHEDULE_DELAYINITIAL: "{{ .Values.aws.queue.chargingEvent.schedule.delayInitial }}"
+  WHSPRS_AWS_SQS_QUEUE_LMMEVENT_URL: "{{ .Values.aws.queue.lmmEvent.url }}"
+  WHSPRS_AWS_SQS_QUEUE_LMMEVENT_SCHEDULE_DELAY: "{{ .Values.aws.queue.lmmEvent.schedule.delay }}"
+  WHSPRS_AWS_SQS_QUEUE_LMMEVENT_SCHEDULE_DELAYINITIAL: "{{ .Values.aws.queue.lmmEvent.schedule.delayInitial }}"
+  WHSPRS_AWS_SQS_QUEUE_TCEVENT_URL: "{{ .Values.aws.queue.tcEvent.url }}"
+  WHSPRS_AWS_SQS_QUEUE_TCEVENT_ENABLED: "{{ .Values.aws.queue.tcEvent.enabled }}"
+  WHSPRS_AWS_SQS_QUEUE_TCEVENT_SCHEDULE_DELAY: "{{ .Values.aws.queue.tcEvent.schedule.delay }}"
+  WHSPRS_AWS_SQS_QUEUE_TCEVENT_SCHEDULE_DELAYINITIAL: "{{ .Values.aws.queue.tcEvent.schedule.delayInitial }}"

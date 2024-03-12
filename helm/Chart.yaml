@@ -1,0 +1,4 @@
+apiVersion: v2
+name: whispers-translation-service
+version: 0.1.0
+description: whispers-translation-service for processing translations
