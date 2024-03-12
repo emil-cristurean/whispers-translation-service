@@ -15,6 +15,7 @@ logging:
               adapter: INFO
     org:
       springframework:
+        security: DEBUG
         web:
           client:
             RestTemplate: DEBUG

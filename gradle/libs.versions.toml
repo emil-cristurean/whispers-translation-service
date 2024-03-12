@@ -12,6 +12,7 @@ ktlint-extension = "1.1.0"
 ktlint = "12.0.3"
 mockito-kotlin = "5.2.0"
 mockito-core = "5.7.0"
+reckon = "0.18.3"
 sonarqube = "4.4.1.3373"
 spring-boot = "3.2.1"
 spring-dependency-manager = "1.1.4"
@@ -66,6 +67,7 @@ idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version.ref = "idea-ex
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+reckon = { id = "org.ajoberstar.reckon", version.ref = "reckon" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-manager = { id = "io.spring.dependency-management", version.ref = "spring-dependency-manager" }

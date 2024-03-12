@@ -54,7 +54,6 @@ class TranslationResource(
         @RequestHeader("x-timezone", required = false) targetTimezone: Long?,
         @RequestHeader("x-date-time", required = false) targetDateTime: Long?,
         @Parameter project: WhispersTranslationProject
-//        @Parameter(hidden = true) @AuthenticationPrincipal principal: WhispersAuthenticatedUser
     ): List<TranslationModel> {
         logger.info("Searching for translations for locale: $locale and project: $project")
         val translations = translationService.getTranslations(project, locale)

@@ -15,6 +15,8 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.versions)
     id("jacoco")
+
+    alias(libs.plugins.reckon)
 }
 
 group = "com.rr.whispers"
@@ -123,6 +125,7 @@ tasks.jacocoTestReport {
 
     reports {
         xml.required.set(true)
+        csv.required.set(true)
         html.required.set(true)
         html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
     }
@@ -144,4 +147,11 @@ tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
     outputFormatter = "html"
     outputDir = "build/dependencyUpdates"
     reportfileName = "report"
+}
+
+extensions.configure<org.ajoberstar.reckon.gradle.ReckonExtension> {
+    setDefaultInferredScope("patch")
+    stages("rc", "final")
+    setScopeCalc(calcScopeFromProp().or(calcScopeFromCommitMessages()))
+    setStageCalc(calcStageFromProp())
 }
