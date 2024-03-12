@@ -1,6 +1,6 @@
 name: scan with KICS and upload SARIF
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   kics-job:
@@ -21,7 +21,7 @@ jobs:
           output_path: kicsResults/
           output_formats: "json,sarif"
 
-      - name: Show results
+      - name: Show resultsx
         if: success() || failure()
         run: |
           cat kicsResults/results.sarif
