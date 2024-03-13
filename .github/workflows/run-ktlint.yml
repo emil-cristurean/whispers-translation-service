@@ -58,7 +58,7 @@ jobs:
         if: failure()
         run: |
           {
-            echo "### KTLint mains resource"
+            echo "### KTLint main resource"
             echo "| Number of files        | Number of errors                                  |"
             echo "| ---------------------- | ------------------------------------------------- |"
             echo "| ${{ env.FILES_COUNT }} | :exclamation:${{ env.ERRORS_COUNT }}:exclamation: |"
