@@ -43,13 +43,13 @@ jobs:
           retention-days: 5
 
       - name: Run tests
-        run: ls reports
+        run: ls build/reports
 
       - name: JaCoCo Code Coverage Report
         id: jacoco_reporter
         uses: PavanMudigonda/jacoco-reporter@v5.0
         with:
-          coverage_results_path: reports/jacoco/test/jacocoTestReport.xml
+          coverage_results_path: build/reports/jacoco/test/jacocoTestReport.xml
           coverage_report_name: Coverage
           coverage_report_title: JaCoCo
 #          github_token: ${{ secrets.GITHUB_TOKEN }}
