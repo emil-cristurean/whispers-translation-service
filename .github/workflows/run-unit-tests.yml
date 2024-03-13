@@ -48,15 +48,6 @@ jobs:
       - name: Run tests
         run: ls build/reports/jacoco
 
-      - name: Add coverage to PR
-        id: jacoco
-        uses: madrapps/jacoco-report@v1.6.1
-        with:
-          paths: |
-            ${{ github.workspace }}/**/build/reports/jacoco/**/jacocoTestReport.xml
-          min-coverage-overall: 40
-          min-coverage-changed-files: 60
-
       - name: JaCoCo Code Coverage Report
         id: jacoco_reporter
         uses: PavanMudigonda/jacoco-reporter@v5.0
