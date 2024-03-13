@@ -24,6 +24,9 @@ whsprs:
   user:
     security:
       basic-authentication:
+        credentials:
+          username: username
+          password: password
         technical-endpoints:
           credentials:
             username: local-test-username

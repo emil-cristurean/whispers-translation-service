@@ -29,6 +29,7 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import java.util.Base64
 import java.util.stream.Stream
 
 @SpringBootTest(classes = [TranslationServiceApplication::class])
@@ -45,6 +46,10 @@ class TranslationResourceIT {
         const val KEYS_QUERY_PARAMS_URL = "limit=1000&page=1&disable_references=0&include_comments=0&" +
             "include_screenshots=0&include_translations=1&filter_untranslated=1&filter_unverified=1"
 
+        const val USERNAME = "username"
+        const val PASSWORD = "password"
+
+        const val AUTHORIZATION_HEADER_NAME = "Authorization"
         const val X_LOCALE_HEADER_NAME = "x-locale"
         const val X_LOCALE_HEADER_VALUE_EN_GB = "en-GB"
         const val X_LOCALE_HEADER_VALUE_KO_KR = "ko-KR"
@@ -160,6 +165,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_EN_GB)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isNotFound).andReturn()
@@ -178,6 +184,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_EN_GB)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isInternalServerError).andReturn()
@@ -197,6 +204,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_EN_GB)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isNotFound).andReturn()
@@ -216,6 +224,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_RO_RO)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isInternalServerError).andReturn()
@@ -239,6 +248,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_RO_RO)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isNotFound).andReturn()
@@ -262,6 +272,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_EN_GB)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isInternalServerError).andReturn()
@@ -289,6 +300,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_EN_GB)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
@@ -319,6 +331,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_KO_KR)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
@@ -349,6 +362,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_JA_JP)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
@@ -376,6 +390,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_EN_GB)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
@@ -403,6 +418,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_KO_KR)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
@@ -430,6 +446,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, X_LOCALE_HEADER_VALUE_JA_JP)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
@@ -461,6 +478,7 @@ class TranslationResourceIT {
         // act
         val result = mvc.perform(
             MockMvcRequestBuilders.get(url)
+                .header(AUTHORIZATION_HEADER_NAME, getBasicAuthHeader())
                 .header(X_LOCALE_HEADER_NAME, locale)
                 .header(X_USER_AGENT_HEADER_NAME, X_USER_AGENT_HEADER_VALUE)
         ).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
@@ -484,4 +502,10 @@ class TranslationResourceIT {
             .configure(KotlinFeature.StrictNullChecks, false)
             .build()
     )
+
+    private fun getBasicAuthHeader(): String {
+        val userPass = "$USERNAME:$PASSWORD"
+
+        return "Basic ${Base64.getEncoder().encodeToString(userPass.toByteArray())}"
+    }
 }
