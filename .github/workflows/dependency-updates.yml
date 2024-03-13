@@ -30,9 +30,9 @@ jobs:
         run: |
           {
             echo "### Dependency updates"
-            echo "| Total                         | Up to date                            | Outdated                                   |"
-            echo "| ----------------------------- | ------------------------------------- |------------------------------------------- |"
-            echo "| ${{ env.DEPENDENCIES_COUNT }} | ${{ env.UPDATED_DEPENDENCIES_COUNT }} | **${{ env.OUTDATED_DEPENDENCIES_COUNT }}** |"
+            echo "| Total                         | Up to date                            | Outdated                                                  |"
+            echo "| ----------------------------- | ------------------------------------- | --------------------------------------------------------- |"
+            echo "| ${{ env.DEPENDENCIES_COUNT }} | ${{ env.UPDATED_DEPENDENCIES_COUNT }} | [**${{ env.OUTDATED_DEPENDENCIES_COUNT }}**]{color="red"} |"
           } >> $GITHUB_STEP_SUMMARY
 
           {
