@@ -29,6 +29,10 @@ jobs:
           output_formats: "json,sarif"
           exclude_queries: "b03a748a-542d-44f4-bb86-9199ab4fd2d5"
 
+      - name: Mkdir kicsResults
+        if: success() || failure()
+        run: ls .
+
       - name: Show results
         if: success() || failure()
         run: |
