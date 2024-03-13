@@ -20,11 +20,11 @@ jobs:
 
       - name: Read values from report.json
         run: |
-          echo "DEPENDENCIES_COUNT=$(jq .count .\build\dependencyUpdates\report.json )" >> $GITHUB_ENV
-          echo "UPDATED_DEPENDENCIES_COUNT=$(jq .current.count .\build\dependencyUpdates\report.json )" >> $GITHUB_ENV
-          echo "OUTDATED_DEPENDENCIES_COUNT=$(jq .outdated.count .\build\dependencyUpdates\report.json )" >> $GITHUB_ENV
-          echo "GRADLE_RUNNING_VERSION=$(jq .gradle.running.version .\build\dependencyUpdates\report.json )" >> $GITHUB_ENV
-          echo "GRADLE_CURRENT_VERSION=$(jq .gradle.current.version .\build\dependencyUpdates\report.json )" >> $GITHUB_ENV
+          echo "DEPENDENCIES_COUNT=$(jq .count build/dependencyUpdates/report.json )" >> $GITHUB_ENV
+          echo "UPDATED_DEPENDENCIES_COUNT=$(jq .current.count build/dependencyUpdates/report.json )" >> $GITHUB_ENV
+          echo "OUTDATED_DEPENDENCIES_COUNT=$(jq .outdated.count build/dependencyUpdates/report.json )" >> $GITHUB_ENV
+          echo "GRADLE_RUNNING_VERSION=$(jq .gradle.running.version build/dependencyUpdates/report.json )" >> $GITHUB_ENV
+          echo "GRADLE_CURRENT_VERSION=$(jq .gradle.current.version build/dependencyUpdates/report.json )" >> $GITHUB_ENV
 
       - name: Show dependency update result
         run: |
