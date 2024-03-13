@@ -53,16 +53,16 @@ jobs:
         if: failure()
         run: |
           echo "SEVERITY_COUNTERS_HIGH=$(jq .severity_counters.HIGH kicsResults/results.json )" >> $GITHUB_ENV
-          echo "SEVERITY_COUNTERS_MEDIUM=$(jq .severity_counters.MEDIUM kicsResults/results.json )" >> $GITHUB_ENV
-          echo "SEVERITY_COUNTERS_LOW=$(jq .severity_counters.LOW kicsResults/results.json )" >> $GITHUB_ENV
-          echo "SEVERITY_COUNTERS_INFO=$(jq .severity_counters.INFO kicsResults/results.json )" >> $GITHUB_ENV
-          echo "SEVERITY_COUNTERS_TRACE=$(jq .severity_counters.TRACE kicsResults/results.json )" >> $GITHUB_ENV
-          echo "SEVERITY_COUNTERS_TOTAL=$(jq .total_counter kicsResults/results.json )" >> $GITHUB_ENV
-          echo "FILES_SCANNED=$(jq .files_scanned kicsResults/results.json )" >> $GITHUB_ENV
-          echo "FILES_PARSED=$(jq .files_parsed kicsResults/results.json )" >> $GITHUB_ENV
-          echo "FILES_FAILED_TO_SCAN=$(jq .files_failed_to_scan kicsResults/results.json )" >> $GITHUB_ENV
-          echo "QUERIES_TOTAL=$(jq .queries_total kicsResults/results.json )" >> $GITHUB_ENV
-          echo "QUERIES_FAILED_TO_EXECUTE=$(jq .queries_failed_to_execute kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "SEVERITY_COUNTERS_MEDIUM=$(jq .severity_counters.MEDIUM kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "SEVERITY_COUNTERS_LOW=$(jq .severity_counters.LOW kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "SEVERITY_COUNTERS_INFO=$(jq .severity_counters.INFO kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "SEVERITY_COUNTERS_TRACE=$(jq .severity_counters.TRACE kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "SEVERITY_COUNTERS_TOTAL=$(jq .total_counter kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "FILES_SCANNED=$(jq .files_scanned kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "FILES_PARSED=$(jq .files_parsed kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "FILES_FAILED_TO_SCAN=$(jq .files_failed_to_scan kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "QUERIES_TOTAL=$(jq .queries_total kicsResults/results.json )" >> $GITHUB_ENV
+#          echo "QUERIES_FAILED_TO_EXECUTE=$(jq .queries_failed_to_execute kicsResults/results.json )" >> $GITHUB_ENV
 
       - name: Show Kics report
         run: |
