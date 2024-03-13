@@ -68,6 +68,18 @@ jobs:
       - name: Add Coverage Job Summary
         run: echo "${{ steps.jacoco_reporter.outputs.coverageSummary }}" >> $GITHUB_STEP_SUMMARY
 
+      - name: Show jacoco report
+        run: |
+          {
+            echo "### Jacoco report"
+            echo "| Outcome        | Value                                  |"
+            echo "| ---------------------- | ------------------------------------------------- |"
+            echo "| Code coverage % |  ${{ steps.jacoco_reporter.outputs.coveragePercentage }}|"
+            echo "| Number of Lines Covered |  ${{ steps.jacoco_reporter.outputs.covered_lines }}|"
+            echo "| Number of Lines Missed |  ${{ steps.jacoco_reporter.outputs.missed_lines }}|"
+            echo "| Total Number of Lines |  ${{ steps.jacoco_reporter.outputs.total_lines }}|"
+          } >> $GITHUB_STEP_SUMMARY
+
       # uploads the coverage-report.md artifact  # Optional
 #      - name: Upload Code Coverage Artifacts
 #        uses: actions/upload-artifact@v2
