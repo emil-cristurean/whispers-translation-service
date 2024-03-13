@@ -21,7 +21,27 @@ jobs:
       - name: Run ktlintKotlinScriptCheck
         run: ./gradlew --no-daemon clean :ktlintKotlinScriptCheck
 
-      - name: Upload ktlintKotlinScriptCheck SARIF file
+      - name: Read values from ktlintKotlinScriptCheck.json
         if: failure()
         run: |
-          cat  build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.txt >> $GITHUB_STEP_SUMMARY
+          echo "FILES_COUNT=$(jq . | length build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.json )" >> $GITHUB_ENV
+          echo "ERRORS_COUNT=$(jq [.[] | { "errors": .errors | length } | .errors] | add build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.json )" >> $GITHUB_ENV
+
+      - name: Show ktlint script result
+        if: failure()
+        run: |
+          {
+            echo "### KTLint script"
+            echo "| Number of files        | Number of errors                                  |"
+            echo "| ---------------------- | ------------------------------------------------- |"
+            echo "| ${{ env.FILES_COUNT }} | :exclamation:${{ env.ERRORS_COUNT }}:exclamation: |"
+          } >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload ktlintKotlinScriptCheck HTML file
+        if: failure()
+
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # 4.3.1
+        with:
+          name: dependency-updates-report
+          path: build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.html
+          retention-days: 5

@@ -141,10 +141,7 @@ configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
     outputToConsole.set(true)
     outputColorName.set("RED")
     reporters {
-        reporter(ReporterType.PLAIN_GROUP_BY_FILE)
-        reporter(ReporterType.CHECKSTYLE)
         reporter(ReporterType.JSON)
-        reporter(ReporterType.SARIF)
         reporter(ReporterType.HTML)
     }
 }

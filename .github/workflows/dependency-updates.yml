@@ -16,9 +16,6 @@ jobs:
       - name: Run dependency update
         run: ./gradlew --no-daemon clean dependencyUpdates
 
-      - name: Run dependency update
-        run: ls -al build/dependencyUpdates/
-
       - name: Read values from report.json
         run: |
           echo "DEPENDENCIES_COUNT=$(jq .count build/dependencyUpdates/report.json )" >> $GITHUB_ENV
