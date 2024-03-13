@@ -1,8 +1,7 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.reporting.ReportGenerator.Format
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterV2Reporter
 
 
 plugins {
@@ -133,7 +132,6 @@ tasks.jacocoTestReport {
     }
 }
 
-
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
     version.set(libs.versions.ktlint.extension.get())
     debug.set(true)
@@ -145,7 +143,6 @@ configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
         reporter(ReporterType.HTML)
     }
 }
-
 
 fun String.isNonStable(): Boolean {
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { uppercase().contains(it) }
