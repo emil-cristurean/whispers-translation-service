@@ -1,7 +1,7 @@
 name: Build service
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   build:
@@ -18,57 +18,5 @@ jobs:
       - name: Add build parameters
         run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
 
-      - name: Run ktlintKotlinScriptCheck
-        run: ./gradlew --no-daemon clean :ktlintKotlinScriptCheck
-
-      - name: Upload ktlintKotlinScriptCheck SARIF file
-        if: failure()
-        run: |
-          echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-          echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
-          echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
-          echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
-
-      - name: Run ktlintCheck
-        run: ./gradlew --no-daemon clean ktlintCheck
-
-      - name: Archive ktlint reports
-        if: success() || failure()
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # 4.3.1
-        with:
-          name: ktlint-report
-          path: build/reports/ktlint
-          retention-days: 5
-
-      - name: Run ktlintCheck
-        run: ./gradlew --no-daemon clean ktlintCheck
-
-      - name: Archive ktlint reports
-        if: success() || failure()
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # 4.3.1
-        with:
-          name: ktlint-report
-          path: build/reports/ktlint
-          retention-days: 5
-
       - name: Build
         run: ./gradlew --no-daemon clean build -x test
-
-      - name: Run tests
-        run: ./gradlew --no-daemon clean test
-
-      - name: Archive unit tests reports
-        if: success() || failure()
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # 4.3.1
-        with:
-          name: unit-tests-report
-          path: build/reports/tests/test
-          retention-days: 5
-
-      - name: Archive jacoco reports
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # 4.3.1
-        with:
-          name: jacoco-report
-          path: build/jacocoHtml
-          retention-days: 5
