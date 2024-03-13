@@ -1,0 +1,41 @@
+name: Dependencies updates
+
+on: [push]
+
+jobs:
+  dependency-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup java and gradle
+        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@d218be1faa0151446f59bcd4c01db1f5bd24722a #1.0.0
+
+      - name: Add build parameters
+        run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
+
+      - name: Run dependency update
+        run: ./gradlew --no-daemon clean dependencyUpdates
+
+      - name: Run dependency update
+        run: ls -al build/dependencyUpdates/
+
+      - name: Run dependency update
+        run: jq .
+
+      - name: Show dependency update result
+        run: |
+          {
+            echo "### Dependency updates"
+            echo "| Variable   | Value       |"
+            echo "| ---------- | ----------- |"
+            echo "| Number of dependencies  | 38  |"
+            echo "| Number of up to date dependencies | 13 |"
+            echo "| Number of outdated dependencies | 0 |"
+            echo "| Number of outdated dependencies | 0 |"
+          } >> $GITHUB_STEP_SUMMARY
+
+      - name: Archive dependency updates
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # 4.3.1
+        with:
+          name: dependency-updates-report
+          path: build/dependencyUpdates/report.html
+          retention-days: 5
