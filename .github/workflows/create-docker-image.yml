@@ -16,7 +16,7 @@ jobs:
     runs-on: [ cawe-linux-x64-general-small ]
     steps:
       - name: Setup java and gradle
-        uses: rolls-royce/whispers-translation-service/.github/actions/setup-java-and-gradle@main
+        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@d218be1faa0151446f59bcd4c01db1f5bd24722a #1.0.0
 
       - name: Update version
         run: ./gradlew --no-daemon clean reckonTagPush -Preckon.scope=${{ inputs.versionIncrease }} -Preckon.stage=final -x Test -DdmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }} -DodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}
@@ -35,14 +35,14 @@ jobs:
         run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@0d103c3126aa41d772a8362f6aa67afac040f80c # 3.1.0
 
       - name: Build service docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@af5a7ed5ba88268d5278f7203fb52cd833f66d6e # 5.2.0
         with:
           context: ./
           push: false
-          tags: whsprslocationservice:${{ steps.latest-tag.outputs.LATEST_TAG }}
+          tags: whsprs-translation-service:${{ steps.latest-tag.outputs.LATEST_TAG }}
           cache-from: type=gha,mode=max
           cache-to: type=gha,mode=max
           build-args: |
