@@ -8,13 +8,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.annotation.Order
-import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer
 import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer
 import org.springframework.security.config.annotation.web.configurers.SessionManagementConfigurer
@@ -78,6 +75,7 @@ class TranslationSecurityConfiguration {
 
     class CustomBasicAuthenticationEntryPoint : BasicAuthenticationEntryPoint() {
         private val logger = LoggerFactory.getLogger(this::class.java)
+
         override fun commence(
             request: HttpServletRequest?,
             response: HttpServletResponse,
@@ -101,7 +99,8 @@ class TranslationSecurityConfiguration {
         val userDetails: UserDetails
             get() =
                 User(
-                    username, "{noop}$password",
+                    username,
+                    "{noop}$password",
                     listOf(SimpleGrantedAuthority("ROLE_USER"))
                 )
     }
