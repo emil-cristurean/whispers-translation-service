@@ -50,7 +50,7 @@ jobs:
           sarif_file: kicsResults/results.sarif
 
       - name: Read values from results.json
-        if: failure()
+        if: success() || failure()
         run: |
           echo "SEVERITY_COUNTERS_HIGH=$(jq .severity_counters.HIGH kicsResults/results.json )" >> $GITHUB_ENV
 #          echo "SEVERITY_COUNTERS_MEDIUM=$(jq .severity_counters.MEDIUM kicsResults/results.json )" >> $GITHUB_ENV
@@ -65,6 +65,7 @@ jobs:
 #          echo "QUERIES_FAILED_TO_EXECUTE=$(jq .queries_failed_to_execute kicsResults/results.json )" >> $GITHUB_ENV
 
       - name: Show Kics report
+        if: success() || failure()
         run: |
           {
             echo "### Kics report"
