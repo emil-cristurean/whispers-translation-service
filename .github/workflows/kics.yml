@@ -1,7 +1,7 @@
 name: Scan with KICS
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   kics-job:
@@ -16,15 +16,16 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # 4.1.1
 
-      - name: Mkdir results-dir
+      - name: Mkdir kicsResults
         # make sure results dir is created
-        run: mkdir -p results-dir
+        run: mkdir -p kicsResults
 
       - name: Run KICS Scan with SARIF result
         uses: checkmarx/kics-github-action@8a44970e3d2eca668be41abe9d4e06709c3b3609 # 1.7.0
         with:
           path: '.'
           output_path: kicsResults/
+          fail_on: high,medium
           output_formats: "json,sarif"
           exclude_queries: "b03a748a-542d-44f4-bb86-9199ab4fd2d5"
 

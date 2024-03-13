@@ -61,13 +61,6 @@ jobs:
           fail_below_threshold: false
           publish_only_summary: false
 
-      - name: Run tests
-        run: ls .
-
-      # Publish Coverage Job Summary  # Optional
-      - name: Add Coverage Job Summary
-        run: echo "${{ steps.jacoco_reporter.outputs.coverageSummary }}" >> $GITHUB_STEP_SUMMARY
-
       - name: Show jacoco report
         run: |
           {
@@ -79,11 +72,3 @@ jobs:
             echo "| Number of Lines Missed  | **${{ steps.jacoco_reporter.outputs.missed_lines }}**       |"
             echo "| Total Number of Lines   | **${{ steps.jacoco_reporter.outputs.total_lines }}**        |"
           } >> $GITHUB_STEP_SUMMARY
-
-      # uploads the coverage-report.md artifact  # Optional
-#      - name: Upload Code Coverage Artifacts
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: code-coverage-report-markdown
-#          path: */coverage-results.md
-#          retention-days: 1
