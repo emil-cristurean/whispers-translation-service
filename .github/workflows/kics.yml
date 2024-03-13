@@ -48,3 +48,43 @@ jobs:
         uses: github/codeql-action/upload-sarif@83a02f7883b12e0e4e1a146174f5e2292a01e601 # V2.16.4
         with:
           sarif_file: kicsResults/results.sarif
+
+      - name: Read values from results.json
+        if: failure()
+        run: |
+          echo "SEVERITY_COUNTERS_HIGH=$(jq .severity_counters.HIGH kicsResults/results.json )" >> $GITHUB_ENV
+          echo "SEVERITY_COUNTERS_MEDIUM=$(jq .severity_counters.MEDIUM kicsResults/results.json )" >> $GITHUB_ENV
+          echo "SEVERITY_COUNTERS_LOW=$(jq .severity_counters.LOW kicsResults/results.json )" >> $GITHUB_ENV
+          echo "SEVERITY_COUNTERS_INFO=$(jq .severity_counters.INFO kicsResults/results.json )" >> $GITHUB_ENV
+          echo "SEVERITY_COUNTERS_TRACE=$(jq .severity_counters.TRACE kicsResults/results.json )" >> $GITHUB_ENV
+          echo "SEVERITY_COUNTERS_TOTAL=$(jq .total_counter kicsResults/results.json )" >> $GITHUB_ENV
+          echo "FILES_SCANNED=$(jq .files_scanned kicsResults/results.json )" >> $GITHUB_ENV
+          echo "FILES_PARSED=$(jq .files_parsed kicsResults/results.json )" >> $GITHUB_ENV
+          echo "FILES_FAILED_TO_SCAN=$(jq .files_failed_to_scan kicsResults/results.json )" >> $GITHUB_ENV
+          echo "QUERIES_TOTAL=$(jq .queries_total kicsResults/results.json )" >> $GITHUB_ENV
+          echo "QUERIES_FAILED_TO_EXECUTE=$(jq .queries_failed_to_execute kicsResults/results.json )" >> $GITHUB_ENV
+
+      - name: Show Kics report
+        run: |
+          {
+            echo "### Kics report"
+            echo "|                                                                                                                 | Category | Results                             |"
+            echo "| --------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------- |"
+            echo "| ![HIGH](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png)   | HIGH     | ${{ env.SEVERITY_COUNTERS_HIGH }}   |"
+            echo "| ![MEDIUM](https://user-images.githubusercontent.com/23239410/92157093-98598300-ee32-11ea-83d7-af52251a011b.png) | MEDIUM   | ${{ env.SEVERITY_COUNTERS_MEDIUM }} |"
+            echo "| ![LOW](https://user-images.githubusercontent.com/23239410/92157091-98598300-ee32-11ea-8498-19bd7d62019b.png)    | LOW      | ${{ env.SEVERITY_COUNTERS_LOW }}    |"
+            echo "| ![INFO](https://user-images.githubusercontent.com/23239410/92157090-97c0ec80-ee32-11ea-9b2e-aa6b32b03d54.png)   | INFO     | ${{ env.SEVERITY_COUNTERS_INFO }}   |"
+            echo "| ![TRACE](https://user-images.githubusercontent.com/23239410/92157090-97c0ec80-ee32-11ea-9b2e-aa6b32b03d54.png)  | TRACE    | ${{ env.SEVERITY_COUNTERS_TRACE }}  |"
+            echo "| ![TOTAL](https://user-images.githubusercontent.com/23239410/92157090-97c0ec80-ee32-11ea-9b2e-aa6b32b03d54.png)  | TOTAL    | ${{ env.SEVERITY_COUNTERS_TOTAL }}  |"
+          } >> $GITHUB_STEP_SUMMARY
+
+          {
+            echo "### Metrics report"
+            echo "|                                                                                                                      | Metric                    | Values                               |"
+            echo "| -------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------ |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Files scanned             | ${{ env.FILES_SCANNED }}             |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Files parsed              | ${{ env.FILES_PARSED }}              |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Files failed to scan      | ${{ env.FILES_FAILED_TO_SCAN }}      |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Total queries             | ${{ env.QUERIES_TOTAL }}             |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Queries failed to execute | ${{ env.QUERIES_FAILED_TO_EXECUTE }} |"
+          } >> $GITHUB_STEP_SUMMARY
