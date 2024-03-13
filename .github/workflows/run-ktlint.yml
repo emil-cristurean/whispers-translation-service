@@ -24,7 +24,7 @@ jobs:
       - name: Read values from ktlintKotlinScriptCheck.json
         if: failure()
         run: |
-          echo "FILES_COUNT=$(jq . | length build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.json )" >> $GITHUB_ENV
+          echo "FILES_COUNT=$(jq '. | length' build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.json )" >> $GITHUB_ENV
           echo "ERRORS_COUNT=$(jq [.[] | { "errors": .errors | length } | .errors] | add build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.json )" >> $GITHUB_ENV
 
       - name: Show ktlint script result
