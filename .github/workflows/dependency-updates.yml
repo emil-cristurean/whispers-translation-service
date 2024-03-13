@@ -30,16 +30,16 @@ jobs:
         run: |
           {
             echo "### Dependency updates"
-            echo "| Total                         | Up to date                            | Outdated                                                  |"
-            echo "| ----------------------------- | ------------------------------------- | --------------------------------------------------------- |"
-            echo "| ${{ env.DEPENDENCIES_COUNT }} | ${{ env.UPDATED_DEPENDENCIES_COUNT }} | <font  style="color:red;"> **${{ env.OUTDATED_DEPENDENCIES_COUNT }}** </font> |"
+            echo "| Total                         | Up to date                            | Outdated                                                               |"
+            echo "| ----------------------------- | ------------------------------------- | ---------------------------------------------------------------------- |"
+            echo "| ${{ env.DEPENDENCIES_COUNT }} | ${{ env.UPDATED_DEPENDENCIES_COUNT }} | :exclamation: **${{ env.OUTDATED_DEPENDENCIES_COUNT }}** :exclamation: |"
           } >> $GITHUB_STEP_SUMMARY
 
           {
             echo "### Gradle"
-            echo "| Running version                   | Current version                       |"
-            echo "| --------------------------------- | ------------------------------------- |"
-            echo "| ${{ env.GRADLE_RUNNING_VERSION }} | **${{ env.GRADLE_CURRENT_VERSION }}** |"
+            echo "| Running version                   | Current version                                                 |"
+            echo "| --------------------------------- | --------------------------------------------------------------- |"
+            echo "| ${{ env.GRADLE_RUNNING_VERSION }} | :exclamation:**${{ env.GRADLE_CURRENT_VERSION }}**:exclamation: |"
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Archive dependency updates
