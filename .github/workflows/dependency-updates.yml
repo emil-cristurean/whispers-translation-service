@@ -18,19 +18,19 @@ jobs:
       - name: Run dependency update
         run: ls -al build/dependencyUpdates/
 
-      - name: Run dependency update
-        run: jq .
+      - name: Read values from report.json
+        run: |
+          echo "DEPENDENCIES_COUNT=$(jq .count .\build\dependencyUpdates\report.json )" >> $GITHUB_ENV
+          echo "UPDATED_DEPENDENCIES_COUNT=$(jq .current.count .\build\dependencyUpdates\report.json )" >> $GITHUB_ENV
+          echo "OUTDATED_DEPENDENCIES_COUNT=$(jq .outdated.count .\build\dependencyUpdates\report.json )" >> $GITHUB_ENV
 
       - name: Show dependency update result
         run: |
           {
             echo "### Dependency updates"
-            echo "| Variable   | Value       |"
-            echo "| ---------- | ----------- |"
-            echo "| Number of dependencies  | 38  |"
-            echo "| Number of up to date dependencies | 13 |"
-            echo "| Number of outdated dependencies | 0 |"
-            echo "| Number of outdated dependencies | 0 |"
+            echo "| Total                         | Up to date                        | Outdated                            |"
+            echo "| ----------------------------- | --------------------------------- |------------------------------------ |"
+            echo "| ${{ env.DEPENDENCIES_COUNT }} | ${{ UPDATED_DEPENDENCIES_COUNT }} | ${{ OUTDATED_DEPENDENCIES_COUNT }}  |"
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Archive dependency updates
