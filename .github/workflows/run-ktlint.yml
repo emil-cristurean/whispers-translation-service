@@ -1,0 +1,27 @@
+name: Run ktlint
+
+on:
+  push:
+
+jobs:
+  ktlint:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Setup java and gradle
+        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@d218be1faa0151446f59bcd4c01db1f5bd24722a #1.0.0
+
+      - name: Add build parameters
+        run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
+
+      - name: Run ktlintKotlinScriptCheck
+        run: ./gradlew --no-daemon clean :ktlintKotlinScriptCheck
+
+      - name: Upload ktlintKotlinScriptCheck SARIF file
+        if: failure()
+        run: |
+          cat  build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.txt >> $GITHUB_STEP_SUMMARY

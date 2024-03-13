@@ -1,6 +1,7 @@
 name: Dependencies updates
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   dependency-update:

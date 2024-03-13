@@ -18,28 +18,6 @@ jobs:
       - name: Add build parameters
         run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
 
-      - name: Run dependency update
-        run: ./gradlew --no-daemon clean dependencyUpdates
-
-      - name: Show dependency update result
-        run: |
-          {
-            echo "### Dependency updates"
-            echo "| Variable   | Value       |"
-            echo "| ---------- | ----------- |"
-            echo "| Number of dependencies  | 38  |"
-            echo "| Number of up to date dependencies | 13 |"
-            echo "| Number of outdated dependencies | 25 |"
-            echo "| Number of outdated dependencies | 25 |"
-          } >> $GITHUB_STEP_SUMMARY
-
-      - name: Archive dependency updates
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # 4.3.1
-        with:
-          name: dependency-updates-report
-          path: build/dependencyUpdates/report.html
-          retention-days: 5
-
       - name: Run ktlintKotlinScriptCheck
         run: ./gradlew --no-daemon clean :ktlintKotlinScriptCheck
 
