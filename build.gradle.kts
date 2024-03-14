@@ -45,7 +45,7 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom("com.rr.whispers:dependencies-bom:2.0.10")
+        mavenBom("com.rr.whispers:dependencies-bom:2.0.20")
     }
     applyMavenExclusions(false)
 }
