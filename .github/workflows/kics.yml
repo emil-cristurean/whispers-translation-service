@@ -1,7 +1,7 @@
 name: Scan with KICS
 
 on:
-  workflow_dispatch:
+  workflow_dispatch :
 
 jobs:
   kics-job:
