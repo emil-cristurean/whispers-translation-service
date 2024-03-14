@@ -21,7 +21,7 @@ jobs:
       - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
         with:
-          scan-type: "fs"
+          scan-type: "config"
           ignore-unfixed: true
           exit-code: "1"
           hide-progress: false
@@ -35,10 +35,15 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
+      - name: Show results
+        if: always()
+        run: |
+          cat trivy-results.sarif
+
       - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
         with:
-          scan-type: "fs"
+          scan-type: "config"
           ignore-unfixed: true
           exit-code: "1"
           hide-progress: false
@@ -54,7 +59,7 @@ jobs:
       - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
         with:
-          scan-type: "fs"
+          scan-type: "config"
           ignore-unfixed: true
           exit-code: "1"
           hide-progress: false
