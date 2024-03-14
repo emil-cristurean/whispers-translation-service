@@ -73,11 +73,11 @@ jobs:
 
           {
             echo "### Metrics report"
-            echo "|                                                                                                                      | Metric                    | Values                               |"
-            echo "| -------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------ |"
-            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Files scanned             | ${{ env.FILES_SCANNED }}             |"
-            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Files parsed              | ${{ env.FILES_PARSED }}              |"
-            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Files failed to scan      | ${{ env.FILES_FAILED_TO_SCAN }}      |"
-            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Total queries             | ${{ env.QUERIES_TOTAL }}             |"
-            echo "| ![placeholder](https://user-images.githubusercontent.com/23239410/92157087-97285600-ee32-11ea-988f-0aca12c4c126.png) | Queries failed to execute | ${{ env.QUERIES_FAILED_TO_EXECUTE }} |"
+            echo "|                                                                                                             | Metric                    | Values                               |"
+            echo "| ----------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------ |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/92157090-97c0ec80-ee32-11ea-9b2e-aa6b32b03d54.png) | Files scanned             | ${{ env.FILES_SCANNED }}             |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/92157090-97c0ec80-ee32-11ea-9b2e-aa6b32b03d54.png) | Files parsed              | ${{ env.FILES_PARSED }}              |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/92157090-97c0ec80-ee32-11ea-9b2e-aa6b32b03d54.png) | Files failed to scan      | ${{ env.FILES_FAILED_TO_SCAN }}      |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/92157090-97c0ec80-ee32-11ea-9b2e-aa6b32b03d54.png) | Total queries             | ${{ env.QUERIES_TOTAL }}             |"
+            echo "| ![placeholder](https://user-images.githubusercontent.com/92157090-97c0ec80-ee32-11ea-9b2e-aa6b32b03d54.png) | Queries failed to execute | ${{ env.QUERIES_FAILED_TO_EXECUTE }} |"
           } >> $GITHUB_STEP_SUMMARY

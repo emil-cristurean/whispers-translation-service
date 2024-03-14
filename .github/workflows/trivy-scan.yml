@@ -4,7 +4,7 @@
 name: "Trivy"
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   trivy:
@@ -17,4 +17,12 @@ jobs:
         uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
         with:
           scan-type: 'fs'
-          scan-ref: '.'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@83a02f7883b12e0e4e1a146174f5e2292a01e601 # V2.16.4
+        with:
+          sarif_file: 'trivy-results.sarif'
