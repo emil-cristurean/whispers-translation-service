@@ -1,7 +1,7 @@
 name: Run ktlint
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   ktlint:

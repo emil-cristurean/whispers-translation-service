@@ -6,6 +6,11 @@ on:
 jobs:
   dependency-update:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
     steps:
       - name: Setup java and gradle
         uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@d218be1faa0151446f59bcd4c01db1f5bd24722a #1.0.0
