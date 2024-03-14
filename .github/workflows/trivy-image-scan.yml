@@ -1,13 +1,13 @@
 # Depending on the location of your Docker container
 # you need to change the path to the specific Docker registry.
 #
-name: "Trivy vulnerability scanner"
+name: "Trivy docker image scan"
 
 on:
   workflow_dispatch:
 
 jobs:
-  trivy-analizer:
+  trivy-docker-image-scan:
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -55,7 +55,7 @@ jobs:
         if: always()
         run: |
           cat trivy-results.sarif
-          
+
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@83a02f7883b12e0e4e1a146174f5e2292a01e601 # V2.16.4
         with:
