@@ -21,7 +21,7 @@ jobs:
       - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
         with:
-          scan-type: "fs  "
+          scan-type: "fs"
           ignore-unfixed: true
           exit-code: "1"
           hide-progress: false
@@ -63,6 +63,11 @@ jobs:
           ignore-unfixed: true
           exit-code: "1"
           hide-progress: false
-#          format: "json"
-#          output: "trivy-results.json"
+          format: "table"
+          output: "trivy-results.csv"
           severity: "CRITICAL,HIGH"
+
+      - name: Show results
+        if: always()
+        run: |
+          cat trivy-results.csv
