@@ -49,7 +49,7 @@ jobs:
 
     steps:
       - name: Setup java and gradle
-        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@d218be1faa0151446f59bcd4c01db1f5bd24722a #1.0.0
+        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@61ff33e06d5208541ab4413ff6a027864e0e0644 #1.0.0
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
