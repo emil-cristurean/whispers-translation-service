@@ -51,7 +51,27 @@ jobs:
           TRIVY_USERNAME: ${{ secrets.USERNAME }}
           TRIVY_PASSWORD: ${{ secrets.PASSWORD }}
 
+      - name: Show results
+        if: always()
+        run: |
+          cat trivy-results.sarif
+          
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@83a02f7883b12e0e4e1a146174f5e2292a01e601 # V2.16.4
         with:
           sarif_file: 'trivy-results.sarif'
+
+      - name: Run Trivy vulnerability scanner for docker image
+        uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
+        with:
+          image-ref: 'ghcr.io/emil-cristurean/translation-service:${{ github.sha }}'
+          format: 'json'
+          output: 'trivy-results.json'
+        env:
+          TRIVY_USERNAME: ${{ secrets.USERNAME }}
+          TRIVY_PASSWORD: ${{ secrets.PASSWORD }}
+
+      - name: Show results
+        if: always()
+        run: |
+          cat trivy-results.json
