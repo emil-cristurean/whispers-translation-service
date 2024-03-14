@@ -17,8 +17,3 @@ runs:
       with:
         cache-read-only: false
         cache-overwrite-existing: true
-#
-#    - name: Make gradlew executable
-#      shell: bash
-#      run: chmod +x ./gradlew
-
