@@ -34,3 +34,30 @@ jobs:
         uses: github/codeql-action/upload-sarif@83a02f7883b12e0e4e1a146174f5e2292a01e601 # V2.16.4
         with:
           sarif_file: 'trivy-results.sarif'
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
+        with:
+          scan-type: "fs"
+          ignore-unfixed: true
+          exit-code: "1"
+          hide-progress: false
+          format: "json"
+          output: "trivy-results.json"
+          severity: "CRITICAL,HIGH"
+
+      - name: Show results
+        if: always()
+        run: |
+          cat trivy-results.json
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
+        with:
+          scan-type: "fs"
+          ignore-unfixed: true
+          exit-code: "1"
+          hide-progress: false
+#          format: "json"
+#          output: "trivy-results.json"
+          severity: "CRITICAL,HIGH"
