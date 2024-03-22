@@ -18,5 +18,8 @@ jobs:
       - name: Add build parameters
         run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
 
+      - name: Print env
+        run: echo ${{ env.TEST_VAR }}
+
       - name: Build
         run: ./gradlew --no-daemon clean build -x test
