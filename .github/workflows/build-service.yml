@@ -12,14 +12,14 @@ jobs:
       security-events: write
 
     steps:
+      - name: Print env
+        run: echo "TEST_VAR=${{ env.TEST_VAR }}"
+
       - name: Setup java and gradle
         uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@d218be1faa0151446f59bcd4c01db1f5bd24722a #1.0.0
 
       - name: Add build parameters
         run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
-
-      - name: Print env
-        run: echo ${{ env.TEST_VAR }}
 
       - name: Build
         run: ./gradlew --no-daemon clean build -x test
