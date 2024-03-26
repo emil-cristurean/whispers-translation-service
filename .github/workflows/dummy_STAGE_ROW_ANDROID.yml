@@ -10,7 +10,7 @@ permissions:
 jobs:
   dummy:
     name: Dummy
-    uses: .github/workflows/dummy.yml
+    uses: .github/workflows/dummy.yml@main
     with:
       environment: 'Stage'
       market: 'ROW'
