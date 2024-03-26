@@ -23,7 +23,7 @@ permissions:
 jobs:
   dummy:
     name: Build and Test
-    runs-on: [ cawe-linux-x64-compute-small ]
+    runs-on: [ ubuntu-latest ]
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
