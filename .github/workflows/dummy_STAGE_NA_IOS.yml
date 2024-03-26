@@ -10,7 +10,7 @@ permissions:
 jobs:
   dummy:
     name: Dummy
-    uses: .github/workflows/dummy.yml
+    uses: emil-cristurean/whispers-translation-service/.github/workflows/dummy.yml@main
     with:
       environment: 'Stage'
       market: 'NA'
