@@ -1,0 +1,17 @@
+name: Dummy STAGE NA iOS workflow
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  dummy:
+    name: Dummy
+    uses: .github/workflows/dummy.yml
+    with:
+      environment: 'Stage'
+      market: 'NA'
+      platform: 'iOS'

@@ -1,0 +1,17 @@
+name: Dummy STAGE ROW Android workflow
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  dummy:
+    name: Dummy
+    uses: .github/workflows/dummy.yml
+    with:
+      environment: 'Stage'
+      market: 'ROW'
+      platform: 'Android'

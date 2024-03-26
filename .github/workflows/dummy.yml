@@ -1,0 +1,34 @@
+name: Dummy workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: Select an environment
+        type: string
+        default: STAGE
+      market:
+        description: Select a market
+        type: string
+        default: ROW
+      platform:
+        description: Select a platform
+        type: string
+        default: Android
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  dummy:
+    name: Build and Test
+    runs-on: [ cawe-linux-x64-compute-small ]
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Print variable
+        run: |
+          echo "environment: ${{ inputs.environment }}"
+          echo "market: ${{ inputs.market }}"
+          echo "platform: ${{ inputs.platform }}"
