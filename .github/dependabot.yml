@@ -9,9 +9,30 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 15
+    pull-request-branch-name:
+      separator: "-"
+    prefix: "dependencies"
+    labels:
+      - "dependencies"
+      - "kotlin"
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 5
+    labels:
+      - "github-actions"
+      - "dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    pull-request-branch-name:
+      separator: "-"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+    labels:
+      - "docker"
+      - "dependencies"
