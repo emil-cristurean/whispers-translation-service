@@ -150,6 +150,7 @@ fun String.isNonStable(): Boolean {
     val isStable = stableKeyword || regex.matches(this)
     return isStable.not()
 }
+
 tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
     rejectVersionIf {
         candidate.version.isNonStable()

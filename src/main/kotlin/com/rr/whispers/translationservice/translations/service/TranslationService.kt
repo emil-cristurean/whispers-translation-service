@@ -35,10 +35,8 @@ class TranslationService(
         keys.forEach { key ->
             // filter for tag
             val projectTags = projectService.getProjectTags(project)
-            if (projectTags.isNotEmpty()) {
-                if (!key.tags.containsAll(projectTags)) {
-                    return@forEach
-                }
+            if (projectTags.isNotEmpty() && !key.tags.containsAll(projectTags)) {
+                return@forEach
             }
 
             // filter for language
