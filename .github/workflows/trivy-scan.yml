@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Setup java and gradle
-        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@a8f21abc4ba65509728bf18d630c0023a3c96b27 #1.0.0
+        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@963b86a5da1779bdcf76000de42ad051cbcc1a69 #1.0.0
 
       - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0

@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Setup java and gradle
-        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@a8f21abc4ba65509728bf18d630c0023a3c96b27 #1.0.0
+        uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@963b86a5da1779bdcf76000de42ad051cbcc1a69 #1.0.0
 
       - name: Add build parameters
         run: printf "\nodmArtifactoryUser=${{ secrets.ODM_ARTIFACTORY_USER }}\nodmArtifactoryPassword=${{ secrets.ODM_ARTIFACTORY_PASSWORD }}\n" >> gradle.properties
