@@ -19,7 +19,7 @@ spring-dependency-manager = "1.1.4"
 springdoc = "2.4.0"
 testcontainers = "1.19.7"
 versions = "0.51.0"
-wiremock = "3.3.0"
+wiremock = "3.4.2"
 
 [libraries]
 feign-okhttp = { module = "io.github.openfeign:feign-okhttp", version.ref = "feign" }
