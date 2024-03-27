@@ -48,20 +48,6 @@ class TranslationSecurityConfiguration {
         }
         return http.build()
     }
-//
-//    @Bean
-//    fun defaultSecurityCustomizer(): WebSecurityCustomizer {
-//        return WebSecurityCustomizer { web: WebSecurity ->
-//            web.ignoring().requestMatchers(
-//                HttpMethod.GET,
-//                "/actuator/prometheus",
-//                "/actuator/health",
-//                "/actuator/info",
-//                "/error",
-//                "/apidoc/**"
-//            )
-//        }
-//    }
 
     @Autowired
     @Throws(Exception::class)

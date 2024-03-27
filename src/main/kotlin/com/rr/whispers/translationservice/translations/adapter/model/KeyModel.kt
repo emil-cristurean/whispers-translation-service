@@ -10,6 +10,5 @@ data class KeyModel(
     @JsonProperty("tags")
     val tags: List<String>,
     @JsonProperty("translations")
-    val translations: List<TranslationModel>,
-
+    val translations: List<TranslationModel>
 )

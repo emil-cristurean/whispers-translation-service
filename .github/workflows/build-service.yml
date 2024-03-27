@@ -1,6 +1,7 @@
 name: Build service
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
