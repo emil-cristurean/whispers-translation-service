@@ -2,7 +2,7 @@
 
 cloud-feign = "4.1.0"
 dependency-check = "9.0.10"
-idea-ext = "1.1.7"
+idea-ext = "1.1.8"
 feign = "13.2.1"
 jackson = "2.15.3"
 java = "17"
