@@ -13,8 +13,8 @@ jobs:
       security-events: write
 
     steps:
-      - name: Print env
-        run: echo "TEST_VAR=${{ env.TEST_VAR }}"
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # 4.1.1
 
       - name: Setup java and gradle
         uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@f94b8f4d433b07f6962f7c5286a458822301d0bf #1.0.0
