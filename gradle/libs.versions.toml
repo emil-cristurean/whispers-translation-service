@@ -1,6 +1,6 @@
 [versions]
 
-cloud-feign = "4.1.1"
+cloud-feign = "4.1.2"
 dependency-check = "9.1.0"
 idea-ext = "1.1.8"
 feign = "13.2.1"
