@@ -1,0 +1,58 @@
+name: Create Docker Image New
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+  security-events: write
+
+jobs:
+  create-docker-tag:
+    runs-on: [ ubuntu-latest ]
+    name: Creating release candidate tag
+    outputs:
+      pre-release-tag: ${{ steps.get_version.outputs.version }}
+      tag: ${{ steps.get_tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get current timestamp
+        id: timestamp
+        run: echo "timestamp=$(date +%s)" >> "$GITHUB_OUTPUT"
+
+      - name: Get tag
+        id: get_tag
+        run: echo "tag=1.36.1" >> "$GITHUB_OUTPUT"
+
+      - name: Get image
+        run: "docker pull busybox:${{ steps.get_tag.outputs.tag }}"
+
+  push-docker-image-to-odm:
+    needs: push-docker-image-to-odm
+    name: Build/push image to ${{ matrix.envs }}
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get image
+        run: "docker pull busybox:${{ needs.tag.outputs.tag }}"
+
+  push-docker-image-to-orbit:
+    needs: push-docker-image-to-orbit
+    name: Build/push image to ${{ matrix.envs }}
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get image
+        run: "docker pull busybox:${{ needs.tag.outputs.tag }}"
