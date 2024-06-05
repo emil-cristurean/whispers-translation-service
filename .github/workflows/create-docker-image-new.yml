@@ -32,8 +32,8 @@ jobs:
         run: "docker pull busybox:${{ steps.get_tag.outputs.tag }}"
 
   push-docker-image-to-odm:
-    needs: create-docker-tag
-    name: Build/push image to ${{ matrix.envs }}
+    needs: [ create-docker-tag ]
+    name: Build/push image ODM
     runs-on: [ ubuntu-latest ]
 
     steps:
@@ -42,11 +42,11 @@ jobs:
           fetch-depth: 0
 
       - name: Get image
-        run: "docker pull busybox:${{ needs.tag.outputs.tag }}"
+        run: "docker pull busybox:${{ needs.create-docker-tag.outputs.tag }}"
 
   push-docker-image-to-orbit:
-    needs: create-docker-tag
-    name: Build/push image to ${{ matrix.envs }}
+    needs: [ create-docker-tag ]
+    name: Build/push image ORBIT
     runs-on: [ ubuntu-latest ]
 
     steps:
@@ -55,4 +55,4 @@ jobs:
           fetch-depth: 0
 
       - name: Get image
-        run: "docker pull busybox:${{ needs.tag.outputs.tag }}"
+        run: "docker pull busybox:${{ needs.create-docker-tag.outputs.tag }}"
