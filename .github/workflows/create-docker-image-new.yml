@@ -32,7 +32,7 @@ jobs:
         run: "docker pull busybox:${{ steps.get_tag.outputs.tag }}"
 
   push-docker-image-to-odm:
-    needs: push-docker-image-to-odm
+    needs: create-docker-tag
     name: Build/push image to ${{ matrix.envs }}
     runs-on: [ ubuntu-latest ]
 
@@ -45,7 +45,7 @@ jobs:
         run: "docker pull busybox:${{ needs.tag.outputs.tag }}"
 
   push-docker-image-to-orbit:
-    needs: push-docker-image-to-orbit
+    needs: create-docker-tag
     name: Build/push image to ${{ matrix.envs }}
     runs-on: [ ubuntu-latest ]
 
