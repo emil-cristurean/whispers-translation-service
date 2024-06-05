@@ -59,6 +59,15 @@ jobs:
 
       - name: List image
         run: "docker images"
-        
+
       - name: Get image
         run: "docker pull busybox:${{ needs.create-docker-tag.outputs.tag }}"
+
+      - name: List image
+        run: "docker images"
+
+      - name: List image
+        run: |
+          echo "::notice::Built and pushed Docker Image: ${{ needs.create-docker-tag.outputs.tag }}"
+
+
