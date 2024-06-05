@@ -41,6 +41,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: List image
+        run: "docker images"
+
       - name: Get image
         run: "docker pull busybox:${{ needs.create-docker-tag.outputs.tag }}"
 
@@ -54,5 +57,8 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: List image
+        run: "docker images"
+        
       - name: Get image
         run: "docker pull busybox:${{ needs.create-docker-tag.outputs.tag }}"
