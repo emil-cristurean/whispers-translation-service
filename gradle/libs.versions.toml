@@ -17,7 +17,7 @@ sonarqube = "5.0.0.4638"
 spring-boot = "3.2.5"
 spring-dependency-manager = "1.1.5"
 springdoc = "2.5.0"
-testcontainers = "1.19.8"
+testcontainers = "1.20.1"
 versions = "0.51.0"
 wiremock = "3.6.0"
 
