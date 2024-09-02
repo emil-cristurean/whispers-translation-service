@@ -21,7 +21,7 @@ jobs:
         run: mkdir -p kicsResults
 
       - name: Run KICS Scan with SARIF result
-        uses: checkmarx/kics-github-action@d1b692d84c536f4e8696954ce7aab6818f95f5bc # 2.0.0
+        uses: checkmarx/kics-github-action@530ac1f8efe6202b0f12c9a6e952597ae707b755 # 2.1.2
         with:
           path: '.'
           output_path: kicsResults/
