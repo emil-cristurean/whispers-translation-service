@@ -19,7 +19,7 @@ jobs:
         uses: emil-cristurean/whispers-translation-service/.github/actions/setup-java-and-gradle@6d68b1394ca76e103e99c4bab78f9f2ead03520a #1.0.0
 
       - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@fd25fed6972e341ff0007ddb61f77e88103953c2 # 0.21.0
+        uses: aquasecurity/trivy-action@6e7b7d1fd3e4fef0c5fa8cce1229c54b2c9bd0d8 # 0.24.0
         with:
           scan-type: "fs"
           ignore-unfixed: true
@@ -41,7 +41,7 @@ jobs:
           cat trivy-results.sarif
 
       - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@fd25fed6972e341ff0007ddb61f77e88103953c2 # 0.21.0
+        uses: aquasecurity/trivy-action@6e7b7d1fd3e4fef0c5fa8cce1229c54b2c9bd0d8 # 0.24.0
         with:
           scan-type: "fs"
           ignore-unfixed: true
@@ -57,7 +57,7 @@ jobs:
           cat trivy-results.json
 
       - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@fd25fed6972e341ff0007ddb61f77e88103953c2 # 0.21.0
+        uses: aquasecurity/trivy-action@6e7b7d1fd3e4fef0c5fa8cce1229c54b2c9bd0d8 # 0.24.0
         with:
           scan-type: "fs"
           ignore-unfixed: true
