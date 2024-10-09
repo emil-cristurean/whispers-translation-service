@@ -46,7 +46,7 @@ jobs:
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Archive dependency updates
-        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # 4.3.3
+        uses: actions/upload-artifact@84480863f228bb9747b473957fcc9e309aa96097 # 4.4.2
         with:
           name: dependency-updates-report
           path: build/dependencyUpdates/report.html
